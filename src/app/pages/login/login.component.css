@@ -1,0 +1,15 @@
+.limiter{
+  background: linear-gradient(#FFFFFF, #E93F68);
+}
+
+#icon-house-pet{
+  /* background-image: url("../login/Icon-House-Login.svg");
+  width: 50%;
+  height: 80%; */
+  background: linear-gradient(#FFFFFF, #E93F68);
+  /* padding: 10px 10px 10px 10px; */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+

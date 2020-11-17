@@ -1,0 +1,162 @@
+<div class="container mt-5" >
+
+<h4>Formulario <small> Reactivo </small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="name"
+               [class.is-invalid]="nombreValido">
+        <small *ngIf="nombreValido" class="text-danger">
+          Ingrese un nombre entre 5 y 15 letras
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Correo</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="email"
+               placeholder="Correo electrónico"
+               formControlName="mail"
+               [class.is-invalid]="mailValido">
+        <small *ngIf="mailValido" class="text-danger">
+          Ingrese un mail valido
+        </small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Usuario</label>
+    <div class="col-8">
+
+      <input class="form-control"
+             type="username"
+             placeholder="Usuario"
+             formControlName="username"
+             [class.is-invalid]="usernameValido">
+      <small *ngIf="usernameValido" class="text-danger">
+        Ingrese un Usuario valido
+    </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Contraseña</label>
+    <div class="col-8">
+      <input class="form-control"
+             type="password"
+             placeholder="Contraseña"
+             formControlName="password"
+             [class.is-invalid]="passwordValido">
+      <small *ngIf="passwordValido" class="text-danger">
+        Ingrese una contraseña valida
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Repetir la contraseña</label>
+    <div class="col-8">
+      <input class="form-control"
+             type="password"
+             placeholder="Vuelve a repetir la contraseña"
+             formControlName="password2"
+             [class.is-invalid]="password2Valido">
+      <small *ngIf="passwordValido" class="text-danger">
+        La contraseña no coincide
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Telefono</label>
+    <div class="col-8">
+      <input class="form-control"
+             type="phone"
+             placeholder="Numero de Telefono"
+             formControlName="phone"
+             [class.is-invalid]="phoneValido">
+      <small *ngIf="phoneValido" class="text-danger">
+        Ingrese un Telefono valido
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Descripcion</label>
+    <div class="col-8">
+      <input class="form-control"
+             type="text"
+             placeholder="Descripcion"
+             formControlName="desc"
+             [class.is-invalid]="descValido">
+      <small *ngIf="descValido" class="text-danger">
+        La descripción debe tener entre 5 y 128 caracteres
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Localidad</label>
+    <div class="col-8">
+      <input class="form-control"
+             type="text"
+             placeholder="Localidad/Partido"
+             formControlName="loc"
+             [class.is-invalid]="locValido">
+      <small *ngIf="locValido" class="text-danger">
+        El nombre de la Localidad o Partido debe tener entre 3 y 40 caracteres
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Experiencia con Animales</label>
+    <div class="col-8">
+      <select class="form-control"
+              placeholder="Experiencia con Animales"
+              formControlName="exp"
+              [class.is-invalid]="expValido">
+      <option *ngFor="let animal of mascotas">
+            {{animal}}
+      </option>
+      </select>
+      <small *ngIf="expValido" class="text-danger">
+        Seleccione una opcion
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+</div>
+
+<hr>
+<pre>
+  Estado del Formulario: {{ forma.valid }}
+  Status: {{ forma.status }}
+</pre>
+<pre>
+  {{forma.value | json }}
+</pre>

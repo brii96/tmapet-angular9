@@ -1,0 +1,167 @@
+<div class="container mt-5">
+<h4>Formularios <small> Template </small></h4>
+<hr>
+<form autocomplete="off" (ngSubmit)="guardar(forma)" #forma="ngForm">
+
+  <div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control "
+               type="text"
+               name="nombre"
+               [class.is-invalid]="nom.invalid && nom.touched"
+               [ngModel]="user.name"
+               placeholder="Nombre"
+               required
+               minlength="5"
+               #nom="ngModel"><!--No se hace ningun posteo si este campo (required) esta vacio-->
+                                <!--#nombre="ngModel" -nombre- es una referencia local del input que me permite aplicar logica para agregar la clase invalid-->
+      <small  *ngIf="nom.invalid && nom.touched"
+              class="form-text text-danger">Ingrese 5 letras como minimo</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Correo</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="email"
+               name="correo"
+               [class.is-invalid]="mail.invalid && mail.touched"
+               [ngModel]="user.mail"
+               placeholder="Correo electrónico"
+               required
+               pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+               #mail="ngModel">
+        <small *ngIf="mail.invalid && mail.touched"
+               class="form-text text-danger">Ingrese un mail valido</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Usuario</label>
+      <div class="col-8">
+        <input class="form-control"
+               type="username"
+               name="username"
+               [class.is-invalid]="uname.invalid && uname.touched"
+               [ngModel]="user.username"
+               placeholder="Usuario"
+               required
+               pattern="[a-zA-Z0-9._-]+"
+               minlength="4"
+               maxlength="15"
+               #uname="ngModel">
+        <small *ngIf="uname.invalid && uname.touched"
+               class="form-text text-danger">Ingrese un Usuario valido</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Telefono</label>
+      <div class="col-8">
+        <input class="form-control"
+               type="phone"
+               name="phone"
+               [class.is-invalid]="phone.invalid && phone.touched"
+               [ngModel]="user.phone"
+               placeholder="Numero de Telefono"
+               required
+               pattern="[0-9]+$"
+               minlength="8"
+               maxlength="15"
+               #phone="ngModel">
+        <small *ngIf="phone.invalid && phone.touched"
+               class="form-text text-danger">Ingrese un Telefono valido</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Contraseña</label>
+      <div class="col-8">
+        <input class="form-control"
+               type="password"
+               name="password"
+               [class.is-invalid]="pass.invalid && pass.touched"
+               [ngModel]="user.password"
+               placeholder="Contraseña"
+               required
+               pattern="[a-zA-Z0-9._-]+"
+               minlength="4"
+               maxlength="16"
+               #pass="ngModel">
+        <small *ngIf="phone.invalid && phone.touched"
+               class="form-text text-danger">Ingrese una contraseña valida</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Descripcion</label>
+      <div class="col-8">
+        <input class="form-control"
+               type="text"
+               name="desc"
+               [class.is-invalid]="desc.invalid && desc.touched"
+               [ngModel]="user.desc"
+               placeholder="Descripcion"
+               minlength="5"
+               maxlength="128"
+               #desc="ngModel">
+        <small *ngIf="desc.invalid && desc.touched"
+               class="form-text text-danger">La descripción debe tener entre 5 y 128 caracteres</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Localidad</label>
+      <div class="col-8">
+        <input class="form-control"
+               type="text"
+               name="loc"
+               [class.is-invalid]="loc.invalid && loc.touched"
+               [ngModel]="user.loc"
+               placeholder="Localidad/Partido"
+               minlength="3"
+               maxlength="40"
+               #loc="ngModel">
+        <small *ngIf="loc.invalid && loc.touched"
+               class="form-text text-danger">El nombre de la Localidad o Partido debe tener entre 3 y 40 caracteres</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Experiencia con Animales</label>
+      <div class="col-8">
+        <select class="form-control"
+               name="exp"
+               [class.is-invalid]="exper.invalid && exper.touched"
+               [ngModel]="user.exp"
+               placeholder="Experiencia con Animales"
+               required
+               #exper="ngModel">
+        <option *ngFor="let item of animales">
+              {{item}}
+        </option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+
+
+</div>
+
